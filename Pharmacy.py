@@ -1,5 +1,6 @@
 import random
 
+
 class Event():
     type = 'a'
     time = 0
@@ -24,7 +25,7 @@ def pharmacy(sim_time, daily_working_time, exp_presciptions_day, exp_prescr_time
     in_queue = 0
 
     current = Event()
-    current.type = "a"
+    current.type = "A"
     current.time = get_next_delay(exp_presciptions_day / daily_working_time)
 
     while current.time < sim_time:
