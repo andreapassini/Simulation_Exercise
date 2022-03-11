@@ -15,7 +15,7 @@ def get_service_time(exp_time, std_dev_time):
     return random.normalvariate(exp_time, std_dev_time)
 
 
-def pharmacy(sim_time, daily_working_time, exp_presciptions_day, exp_prescr_time, stdev_presc_time):
+def pharmacy(daily_working_time, exp_presciptions_day, exp_prescr_time, stdev_presc_time):
     # interesting events:
     # (a) arrival of presciptions
     # (s) starting of prescriptions filling
@@ -38,8 +38,8 @@ def pharmacy(sim_time, daily_working_time, exp_presciptions_day, exp_prescr_time
         current = events[k]
         events = events[:k] + events[k + 1:]
 
-        print("handling event at time", current.time, "of time", current.type)
-        print("pharmacist busy: ", busy, "in qeue", in_queue)
+        # print("handling event at time", current.time, "of time", current.type)
+        # print("pharmacist busy: ", busy, "in qeue", in_queue)
 
         if current.type == "A":
 
@@ -85,4 +85,6 @@ def pharmacy(sim_time, daily_working_time, exp_presciptions_day, exp_prescr_time
                 events.append(e)
 
                 in_queue = in_queue - 1
-                
+
+    # return max(current.time, daily_working_time)
+    return current.time >= 510
